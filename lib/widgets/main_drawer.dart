@@ -1,7 +1,8 @@
+import 'package:delimeals/screens/filters_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  Widget buildListTitle(String title, IconData icon) {
+  Widget buildListTitle(String title, IconData icon, Function tapHandler) {
     return ListTile(
       leading: Icon(
         icon,
@@ -15,7 +16,7 @@ class MainDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () {},
+      onTap: tapHandler,
     );
   }
 
@@ -45,10 +46,17 @@ class MainDrawer extends StatelessWidget {
           buildListTitle(
             'Meals',
             Icons.restaurant,
+            () {
+              Navigator.of(context).pushReplacementNamed('/');
+            },
           ),
           buildListTitle(
             'Filters',
             Icons.settings,
+            () {
+              Navigator.of(context)
+                  .pushReplacementNamed(FiltersScreen.routeName);
+            },
           ),
         ],
       ),
